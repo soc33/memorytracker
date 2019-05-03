@@ -3,7 +3,7 @@ import Header from "../components/layout/header";
 import Footer from "../components/layout/footer";
 import Wrapper from "../components/layout/wrapper";
 import Submit from "../components/layout/buttons/submitButton";
-import Signup from "../components/layout/modal/signupModal";
+import Modal from "../components/layout/modal/signupModal";
 import FAQs from "../components/content/FAQs";
 
 function Home() {
@@ -12,7 +12,7 @@ function Home() {
       <Header />
     <Wrapper>
     <FAQs />
-    <Submit onClick={() => {Signup.signup()}}>
+    <Submit onClick={() => {Modal.signup()}}>
       Sign up!
     </Submit>
     </Wrapper>

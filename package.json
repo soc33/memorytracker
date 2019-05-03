@@ -1,0 +1,30 @@
+{
+  "name": "memorytracker",
+  "version": "1.0.0",
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/soc33/memorytracker.git"
+  },
+  "author": "SarahL",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/soc33/memorytracker/issues"
+  },
+  "homepage": "https://github.com/soc33/memorytracker#readme",
+  "devDependencies": {
+    "concurrently": "^4.1.0",
+    "nodemon": "^1.18.7"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "express": "^4.16.4",
+    "if-env": "^1.0.4",
+    "mongoose": "^5.5.5"
+  }
+}

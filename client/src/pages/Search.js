@@ -3,12 +3,12 @@ import API from "../utils/API";
 import Container from "../components/Container";
 import SearchForm from "../components/SearchForm";
 import SearchResults from "../components/SearchResults";
-import Alert from "../components/Alert";
+import Alert from "../components/layout/alerts";
 
 class Search extends Component {
   state = {
     search: "",
-    breeds: [],
+    title: [],
     results: [],
     error: ""
   };
