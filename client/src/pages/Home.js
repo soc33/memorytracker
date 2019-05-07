@@ -1,9 +1,10 @@
-import React, { Component } from "react";
+import React from "react";
 import Header from "../components/layout/header";
 import Footer from "../components/layout/footer";
 import Wrapper from "../components/layout/wrapper";
-import Submit from "../components/layout/buttons/submitButton";
-import Modal from "../components/layout/modal/signupModal";
+// import Submit from "../components/layout/buttons/submitButton";
+import SignUpModal from "../components/layout/modal/signupModal";
+import SignInModal from "../components/layout/modal/signinModal";
 import FAQs from "../components/content/FAQs";
 
 function Home() {
@@ -11,10 +12,12 @@ function Home() {
     <div>
       <Header />
     <Wrapper>
+      <SignUpModal />
+      <SignInModal />
     <FAQs />
-    <Submit onClick={() => {Modal.signup()}}>
+    {/* <Submit onClick={() => {SignUpModal.signup()}}>
       Sign up!
-    </Submit>
+    </Submit> */}
     </Wrapper>
     <Footer />
     </div>
