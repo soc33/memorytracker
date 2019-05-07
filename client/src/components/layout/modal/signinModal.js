@@ -1,25 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
+import {FormBtn, Input} from "../../content/Form"
 
-class signinModal extends Component {
-  state = {
-
-  }
-
-  render() {
-    return (
-      <div className="modal">
-        <label className="modal-bg" for="modal-1"></label>
-        <div className="modal-body">
-          <label className="btn-close" for="modal-1">X</label>
-          <h4 className="modal-title">Modal Title</h4>
-          <h5 className="modal-subtitle">Modal Subtitle</h5>
-          <p className="modal-text">This is an example of modal which is implemented with pure CSS! :D</p>
-          <label for="modal-1">Nice!</label>
-        </div>
+function signinModal() {
+  return (
+    <div className="card">
+      <div className="card-header">Sign up!</div>
+      <div className="card-body">
+        <h4 className="card-title">My awesome Paper card!</h4>
+        <Input/>
+        <h5 className="card-subtitle">Nice looking subtitle.</h5>
+        <p className="card-text">You can also place image on the bottom of the card.</p>
+        
       </div>
+      <div className="card-footer"><FormBtn>Sign me up!</FormBtn></div>
+    </div>
 
-    );
-  }
+  );
 }
 
 export default signinModal;

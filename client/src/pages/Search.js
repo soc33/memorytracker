@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import API from "../utils/API";
-import Container from "../components/Container";
-import SearchForm from "../components/SearchForm";
-import SearchResults from "../components/SearchResults";
-import Alert from "../components/layout/alerts";
+import Container from "../components/layout/wrapper";
+import SearchForm from "../components/layout/search/SearchForm";
+import SearchResults from "../components/layout/search/SearchResults";
+// import Alert from "../components/layout/alerts";
 
 class Search extends Component {
   state = {
@@ -40,12 +40,12 @@ class Search extends Component {
       <div>
         <Container style={{ minHeight: "80%" }}>
           <h1 className="text-center">Search By Breed!</h1>
-          <Alert
+          {/* <Alert
             type="danger"
             style={{ opacity: this.state.error ? 1 : 0, marginBottom: 10 }}
           >
             {this.state.error}
-          </Alert>
+          </Alert> */}
           <SearchForm
             handleFormSubmit={this.handleFormSubmit}
             handleInputChange={this.handleInputChange}

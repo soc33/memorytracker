@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import API from "../utils/API";
-import Wrapper from "../components/wrapper";
+import Wrapper from "../components/layout/wrapper";
 import SubmitButton from "../components/layout/buttons/submitButton";
 import ProfileButton from "../components/layout/buttons/profileButton";
 import Latest from "../components/layout/cards/latestCard";

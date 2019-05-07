@@ -2,13 +2,15 @@ import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
 import Home from "./pages/Home";
-import Add from "./pages/Add";
+import Add from "./pages/AddGame";
 import Search from "./pages/Search";
 import SendFavs from "./pages/SendFavs";
 import SetUp from "./pages/SetUp";
 import Header from "./components/layout/header";
 import Footer from "./components/layout/footer";
 import Wrapper from "./components/layout/wrapper";
+import "./index.css";
+
 
 function App() {
   return (
