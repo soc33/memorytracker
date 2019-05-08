@@ -1,11 +1,10 @@
 import React from "react";
 import "./style.css";
+// import paper from "papercss";
 
 function Wrapper(props) {
-  return <main className="row"
-      {...props}
-    
-  />;
+  return <div className="flex-container paper container" {...props} />
+
 }
 
 export default Wrapper;

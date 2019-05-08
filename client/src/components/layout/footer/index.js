@@ -2,7 +2,7 @@ import React from "react";
 
 function Footer() {
   return (
-    <footer>
+    <footer className="sticky">
       <p>Footer text</p>
     </footer>
   )

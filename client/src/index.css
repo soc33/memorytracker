@@ -1,3 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower|Modak|Orbitron');
+.title1 {
+  font-family: 'Modak';
+}
+
+/* font-family: 'Indie Flower', cursive; */
+/* font-family: 'Orbitron', sans-serif; */
+
+
 body {
   margin: 0;
   padding: 0;
@@ -6,12 +15,24 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url("./images/urban-desk.jpg");
+  background-image: url("./images/busy.jpg");
   background-size: cover;
-  background-repeat: none;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
+.tab {
+  text-indent: 5em;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.flex-container {
+  /* margin: auto; */
+  height: 300px;
+  justify-content: center;
+  align-items: center;
+  width: 75%;
 }

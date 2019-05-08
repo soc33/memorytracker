@@ -9,6 +9,7 @@ import SetUp from "./pages/SetUp";
 import Header from "./components/layout/header";
 import Footer from "./components/layout/footer";
 import Wrapper from "./components/layout/wrapper";
+import FAQs from "./components/content/FAQs";
 import "./index.css";
 
 
@@ -24,6 +25,7 @@ function App() {
           <Route exact path="/send" component={SendFavs} />
           <Route exact path="/dashboard" component={Dashboard} />
           <Route exact path="/search" component={Search} />
+          <FAQs/>
         </Wrapper>
         <Footer />
       </div>
