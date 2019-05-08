@@ -6,19 +6,19 @@ import Add from "./pages/AddGame";
 import Search from "./pages/Search";
 import SendFavs from "./pages/SendFavs";
 import SetUp from "./pages/SetUp";
-import Header from "./components/layout/header";
+// import Header from "./components/layout/header";
 import Footer from "./components/layout/footer";
-import Wrapper from "./components/layout/wrapper";
+// import Wrapper from "./components/layout/wrapper";
 import FAQs from "./components/content/FAQs";
 import "./index.css";
+import Jumbotron from "./components/layout/jumbotron";
 
 
 function App() {
   return (
     <Router>
       <div>
-        <Header />
-        <Wrapper>
+        <Jumbotron />
           <Route exact path="/add" component={Add} />
           <Route exact path="/home" component={Home} />
           <Route exact path="/settings" component={SetUp} />
@@ -26,7 +26,7 @@ function App() {
           <Route exact path="/dashboard" component={Dashboard} />
           <Route exact path="/search" component={Search} />
           <FAQs/>
-        </Wrapper>
+
         <Footer />
       </div>
     </Router>

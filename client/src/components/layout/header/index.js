@@ -10,7 +10,8 @@ import "./style.css";
 
 const styles = {
   headerStyle: {
-    background: "red"
+    background: "none",
+    // opacity: 0.1
   },
   headingStyle: {
     fontSize: 100
@@ -21,8 +22,8 @@ const styles = {
 
 function Header() {
   return (
-    <header style={styles.headerStyle} className="header">
-      <h1 className="title1" style={styles.headingStyle}>Welcome</h1>
+    <header className="header typewriter">
+      <h1>Welcome to <span className="title1" style={styles.headingStyle}>Memory </span><span className="title2" style={styles.headingStyle}>Tracker!</span></h1>
     </header>
   );
 }

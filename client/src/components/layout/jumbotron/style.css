@@ -1,0 +1,19 @@
+.header {
+  background-image: url("../../../images/scribble-transparent-cloud-2.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  /* height: 200px; */
+  margin-bottom: 50px;
+}
+
+.header h1 {
+  /* font-family: starry; */
+  margin: 0;
+  padding-top: 75px;
+  text-align: center;
+  color: black;
+  font-size: 2rem;
+  /* padding-bottom: 5em; */
+}
+
