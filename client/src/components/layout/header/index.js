@@ -1,4 +1,5 @@
 import React from "react";
+import ProfileButton from "../buttons/profileButton";
 import "./style.css";
 
 // By importing the Header.css file, it is added to the DOM whenever this component loads
@@ -14,7 +15,7 @@ const styles = {
     // opacity: 0.1
   },
   headingStyle: {
-    fontSize: 100
+    fontSize: 15
   }
 };
 
@@ -22,8 +23,9 @@ const styles = {
 
 function Header() {
   return (
-    <header className="header typewriter">
-      <h1>Welcome to <span className="title1" style={styles.headingStyle}>Memory </span><span className="title2" style={styles.headingStyle}>Tracker!</span></h1>
+    <header className="typewriter">
+      <h5><span className="title1" style={styles.headingStyle}>Memory </span><span className="title2" style={styles.headingStyle}>Tracker!</span></h5>
+      <ProfileButton />
     </header>
   );
 }

@@ -3,7 +3,7 @@ import "./style.css";
 // import paper from "papercss";
 
 function Wrapper(props) {
-  return <div className="paper container border border-primary" {...props} />
+  return <div className="container" {...props} />
 
 }
 

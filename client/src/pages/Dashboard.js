@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 import Wrapper from "../components/layout/wrapper";
-import SubmitButton from "../components/layout/buttons/submitButton";
 import ProfileButton from "../components/layout/buttons/profileButton";
 import Latest from "../components/layout/cards/latestCard";
-import Jumbotron from "../components/layout/jumbotron";
+import Header from "../components/layout/header";
 
 
 class Dashboard extends Component {
@@ -22,18 +21,12 @@ class Dashboard extends Component {
 
   render() {
     return (
-      <div>
-        <Wrapper style={{ minHeight: "80%" }}>
-          <Jumbotron>
-            <h1 className="text-center">Memory Tracker</h1> <ProfileButton />
-            <SubmitButton>Log in</SubmitButton>
-            <SubmitButton>Create a new account</SubmitButton>
-          </Jumbotron>
-          <Latest>
-          latest={this.state.latest}
-          </Latest>
+        <Wrapper className="paper container border border-primary">
+          <Header />
+          <h1 className="typewriter"><span className="title1" >Memory </span><span className="title2" >Tracker!</span></h1>
+
+          <Latest/>
         </Wrapper>
-      </div>
     );
   }
 }

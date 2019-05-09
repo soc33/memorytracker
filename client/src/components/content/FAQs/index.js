@@ -3,7 +3,7 @@ import Wrapper from "../../layout/wrapper";
 
 function index() {
   return (
-    <Wrapper>
+    <Wrapper className="paper container border border-primary">
       <div className="row">
         <h2>What is <span className="title1">Memory </span><span className="title2">Tracker</span>?</h2>
         </div>
