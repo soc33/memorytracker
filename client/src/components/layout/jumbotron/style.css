@@ -3,7 +3,8 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
-  /* height: 200px; */
+  height: 40%;
+  padding: 60px;
   margin-bottom: 50px;
 }
 
@@ -17,3 +18,7 @@
   /* padding-bottom: 5em; */
 }
 
+h1 {
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+}

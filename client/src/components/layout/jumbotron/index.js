@@ -1,7 +1,6 @@
-import React from "react";
+import React, { Component } from "react";
 import "./style.css";
-import SignInButton from "../buttons/submitButton";
-import SignUpLink from "../links";
+import SignInUpButton from "../buttons/submitButton";
 
 // By importing the Header.css file, it is added to the DOM whenever this component loads
 
@@ -22,14 +21,21 @@ const styles = {
 
 // We use JSX curly braces to evaluate the style object
 
-function Jumbotron() {
-  return (
-    <header className="header typewriter">
-    <h4>Welcome to </h4>
-      <h1 className="typewriter"><span className="title1" style={styles.headingStyle}>Memory </span><span className="title2" style={styles.headingStyle}>Tracker!</span></h1>
-      <SignInButton /><p className="script"> No account yet? </p><SignUpLink />
-    </header>
-  );
+class Jumbotron extends Component {
+
+  handleScroll = event => {
+    event.preventDefault();
+    this.document.querySelecotor('footer').scrollIntoView()
+  }
+
+  render() {
+    return (
+      <header className="header typewriter">
+        <h1 className="typewriter"><span className="title1" style={styles.headingStyle}>Memory </span><span className="title2" style={styles.headingStyle}>Tracker!</span></h1>
+        <SignInUpButton onClick={() => this.handleScroll()}>Signin/Signup!</SignInUpButton>
+      </header>
+    );
+  }
 }
 
 export default Jumbotron;
