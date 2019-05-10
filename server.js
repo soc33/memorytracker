@@ -25,13 +25,13 @@ app.use(require('express-session')({
 app.use(passport.initialize());
 app.use(passport.session());
 
-const User = require('./models/users');
+const User = require('./models/User');
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/entries")
+mongoose.connect(process.env.MONGODB_URI || "mongodb://user1:password1@ds227255.mlab.com:27255/heroku_1s7npj3h")
   .then(() => console.log('connection succesful'))
   .catch((err) => console.error(err));
 // Start the API server

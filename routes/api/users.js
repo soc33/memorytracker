@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const auth = require("../controllers/AuthController.js");
+const auth = require("../../controllers/AuthController");
 
 
 /* GET users listing. */
@@ -8,18 +8,13 @@ router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
-router.get('/dashboard')
-  .get(auth.username)
-
 // route to register
 router.get('/register')
-  .get(auth.register)
-  .post(auth.doregister);
+  .post(auth.register);
 
 // route to login 
 router.get('/login')
-  .get(auth.login)
-  .post(auth.doLogin);
+  .post(auth.login);
 
 // route for logout action
 router.get('/logout', auth.logout);

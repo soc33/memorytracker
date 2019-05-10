@@ -9,10 +9,13 @@ module.exports = {
     db.User
       .create(req)
       .then(dbUser => res.json(dbUser.username))
+      passport.authenticate('local')(req, res, function () {
+        res.json(res);
+      })
       .catch(err => res.status(422).json(err));
-  },
-  create: function(req, res) {
-    db.User
+    },
+  login: function(req, res) {
+      db.User
       .create(req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
@@ -23,7 +26,7 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  remove: function(req, res) {
+  logout: function(req, res) {
     db.Book
       .findById({ _id: req.params.id })
       .then(dbModel => dbModel.remove())
@@ -44,35 +47,32 @@ module.exports = {
 //   res.render('register');
 // };
 
-// Post registration
-userController.doRegister = function(req, res) {
-  User.register(new User({ username : req.body.username, name: req.body.name }), req.body.password, function(err, user) {
-    if (err) {
-      return res.json(user);
-    }
+// // Post registration
+// userController.doRegister = function(req, res) {
+//   User.register(new User({ username : req.body.username, name: req.body.name }), req.body.password, function(err, user) {
+//     if (err) {
+//       return res.json(user);
+//     }
 
-    passport.authenticate('local')(req, res, function () {
-      res.json(res);
-    });
-  });
-};
+//   });
+// };
 
-// Go to login page
-userController.login = function(req, res) {
-  res.json(res);
-};
+// // Go to login page
+// userController.login = function(req, res) {
+//   res.json(res);
+// };
 
-// Post login
-userController.doLogin = function(req, res) {
-  passport.authenticate('local')(req, res, function () {
-    res.json(res);
-  });
-};
+// // Post login
+// userController.doLogin = function(req, res) {
+//   passport.authenticate('local')(req, res, function () {
+//     res.json(res);
+//   });
+// };
 
-// logout
-userController.logout = function(req, res) {
-  req.logout();
-  res.json(res);
-};
+// // logout
+// userController.logout = function(req, res) {
+//   req.logout();
+//   res.json(res);
+// };
 
-module.exports = userController;
+// module.exports = userController;
