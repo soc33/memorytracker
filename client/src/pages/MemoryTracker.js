@@ -22,6 +22,10 @@ class MemoryTracker extends Component {
     this.isAuthorized();
   };
 
+  componentWillUnmount() {
+
+  };
+
   resetState = () => {
     this.setState({
       isAuth: false,
@@ -60,6 +64,7 @@ class MemoryTracker extends Component {
         this.isAuthorized();
       });
   };
+  
   render() {
     return (
       <div>
@@ -74,7 +79,7 @@ class MemoryTracker extends Component {
               )}
               />
               <Route exact path="/" render={() => (
-                loggedIn ? (
+                this.state.isAuth ? (
                   <Redirect to="/dashboard" />
                 ) : (
                     <Home />
