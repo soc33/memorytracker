@@ -2,19 +2,28 @@ import axios from "axios";
 
 export default {
   // Gets all books
-  getLatestList: function() {
+  getLatestList: function () {
     return axios.get("/api/books");
   },
   // Gets the book with the given id
-  signIn: function(id) {
-    return axios.get("/api/books/" + id);
+  signIn: function (email, password) {
+    axios.post("/api/user/login", { "email": email, "password": password })
+      .then(res => {
+        console.log(res)
+        if (res) {
+          console.log("Successful Login");
+          axios.get("/api/user/login");
+        } else {
+          console.log("sign-in error");
+        }
+      })
   },
   // Deletes the book with the given id
-  signUp: function(id) {
+  signUp: function (id) {
     return axios.delete("/api/books/" + id);
   },
   // Saves a book to the database
-  saveBook: function(bookData) {
+  saveBook: function (bookData) {
     return axios.post("/api/books", bookData);
   }
 };

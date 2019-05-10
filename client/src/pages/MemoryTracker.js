@@ -1,13 +1,12 @@
-import React from "react";
+import React, { Component } from "react";
 // import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Dashboard from "./pages/Dashboard";
+import Dashboard from "./Dashboard";
 import NavTabs from "../components/layout/Navtabs";
-import Home from "./pages/Home";
-import Add from "./pages/AddGame";
-import Search from "./pages/Search";
-import SendFavs from "./pages/SendFavs";
-import SetUp from "./pages/SetUp";
-import "./index.css";
+import Home from "./Home";
+import Add from "./AddGame";
+import Search from "./Search";
+import SendFavs from "./SendFavs";
+import SetUp from "./SetUp";
 
 
 
