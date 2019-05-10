@@ -1,7 +1,5 @@
 const passport = require("passport");
-const express = require("express");
-const db = require("../../models");
-const isAuthenticated = require("./config/middleware/isAuthenticated");
+const db = require("../models");
 
 
 module.exports = {
@@ -39,12 +37,18 @@ module.exports = {
     })(req, res, next);
   },
   
-
-  isAuthorized: isAuthenticated, function (req, res) {
+  isAuthorized: function (req, res) {
     res.json(req.user);
   },
 
 
+  findAll: function(req, res) {
+    db.Entries
+      .find(req.query)
+      .sort({ date: -1 })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
   logout: function (req, res) {
     req.logout();
     res.json({ message: "logged out" });

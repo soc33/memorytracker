@@ -31,7 +31,7 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://user1:password1@ds155086.mlab.com:55086/heroku_px2m2zmv")
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/memorytracker", { useNewUrlParser: true })
   .then(() => console.log('connection succesful'))
   .catch((err) => console.error(err));
 // Start the API server

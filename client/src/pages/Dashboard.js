@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import API from "../utils/API";
 import Wrapper from "../components/layout/wrapper";
-import Latest from "../components/layout/cards/latestCard";
 import Header from "../components/layout/header";
 import SubmitBtn from "../components/layout/buttons/submitButton";
 

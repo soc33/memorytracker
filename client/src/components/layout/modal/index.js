@@ -3,74 +3,76 @@ import Wrapper from "../wrapper";
 import API from "../../../utils/API";
 import Form from "../form/Form";
 import "./style.css";
-import MemoryTracker from "../../../pages/MemoryTracker";
-import PropTypes from "prop-types";
-import { withRouter } from "react-router";
 
 
 class signinModal extends Component {
-  static propTypes = {
-    match: PropTypes.object.isRequired,
-    location: PropTypes.object.isRequired,
-    history: PropTypes.object.isRequired
-  };
   state = {
     username: "CoolestUsernameEver",
     email: "email",
     password: "password",
-    message: ""
+    error: ""
   };
-    
+
   handleSignInSubmit = event => {
     event.preventDefault();
     this.signIn();
   }
-  
+
   handleSignUpSubmit = event => {
     event.preventDefault();
     this.signUp();
   }
-  
+
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
       [name]: value
     });
   };
-  
-  signIn= {
+
+  signIn = {
 
   };
-  
+
   signUp = () => {
-    API.signUp(this.state.email, this.state.password, this.state.username)
-    .then(res =>
-      this.setState({
-        username: res
+    API.register({ email: this.state.email, username: this.state.username, password: this.state.password })
+      .then(res => {
+        if (res.data.message) {
+          this.setState({
+            error: res.data.message
+          });
+        } else {
+          this.props.isAuthorized();
+          this.props.closeLogin();
+        }
       })
-      )
-      .catch(() =>
-      this.setState({
-        message: "Unable to login"
-      })
-      );
-    };
-    
-    render() {
-      return (
-        <Wrapper>
-      <h2>{this.state.message}</h2>
-      <Form
-        handleInputChange={this.handleInputChange}
-        handleSignInSubmit={this.handleSignInSubmit}
-        handleSignUpSubmit={this.handleSignUpSubmit}
-        email={this.state.email}
-        password={this.state.password}
-        username={this.state.username}
-      />
-    </Wrapper>
-  );
-}
+      .catch(err => {
+        console.log(err);
+        this.setState({ error: "A server error has occured." });
+      });
+    this.setState({ password: "" });
+  };
+
+
+  render() {
+    return (
+      <Wrapper>
+        <Form
+          handleInputChange={this.handleInputChange}
+          handleSignInSubmit={this.handleSignInSubmit}
+          handleSignUpSubmit={this.handleSignUpSubmit}
+          email={this.state.email}
+          password={this.state.password}
+          username={this.state.username}
+        />
+        {this.state.error ? (
+          <p className="help error-text is-danger">{this.state.error}</p>
+        ) : (
+            ""
+          )}
+      </Wrapper>
+    );
+  }
 }
 
-export default withRouter(signinModal);
+export default signinModal;

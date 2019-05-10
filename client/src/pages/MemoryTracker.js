@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import Dashboard from "./Dashboard";
 import Home from "./Home";
 import Add from "./AddGame";
@@ -20,7 +20,7 @@ class MemoryTracker extends Component {
 
   componentDidMount() {
     this.isAuthorized();
-  }
+  };
 
   resetState = () => {
     this.setState({
@@ -40,7 +40,7 @@ class MemoryTracker extends Component {
             isAuth: true,
             username: res.data.username
           })
-          .then(React.redirect = "/dashboard");
+          this.redirect();
         }
       })
       .catch(err => {
@@ -73,6 +73,13 @@ class MemoryTracker extends Component {
                 />
               )}
               />
+              <Route exact path="/" render={() => (
+                loggedIn ? (
+                  <Redirect to="/dashboard" />
+                ) : (
+                    <Home />
+                  )
+              )} />
               <Route exact path="/add" render={props => (
                 <Add
                   username={this.state.username}
@@ -93,7 +100,7 @@ class MemoryTracker extends Component {
                   isAuthorized={this.isAuthorized}
                 />
               )}
-             />
+              />
               <Route component={Home} />
             </Switch>
           </div>

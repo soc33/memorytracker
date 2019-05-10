@@ -16,6 +16,9 @@ router.get('/register')
 router.get('/login')
   .post(auth.login);
 
+router.get("/authorized")
+  .get(auth.isAuthorized)
+
 // route for logout action
 router.get('/logout', auth.logout);
 
