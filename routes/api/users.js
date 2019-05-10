@@ -8,20 +8,18 @@ router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
-// restrict index for logged in user only
-router.get('/', auth.home);
+router.get('/dashboard')
+  .get(auth.username)
 
-// route to register page
-router.get('/register', auth.register);
+// route to register
+router.get('/register')
+  .get(auth.register)
+  .post(auth.doregister);
 
-// route for register action
-router.post('/register', auth.doRegister);
-
-// route to login page
-router.get('/login', auth.login);
-
-// route for login action
-router.post('/login', auth.doLogin);
+// route to login 
+router.get('/login')
+  .get(auth.login)
+  .post(auth.doLogin);
 
 // route for logout action
 router.get('/logout', auth.logout);

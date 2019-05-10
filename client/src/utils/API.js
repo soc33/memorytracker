@@ -11,8 +11,10 @@ export default {
       .then(res => {
         console.log(res)
         if (res) {
-          console.log("Successful Login");
-          axios.get("/api/user/login");
+          console.log("Successful Login" + res);
+          this.setState({
+            currentPage: "Dashboard"
+          });
         } else {
           console.log("sign-in error");
         }

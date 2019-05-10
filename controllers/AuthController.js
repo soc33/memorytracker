@@ -1,48 +1,78 @@
 const mongoose = require("mongoose");
 const passport = require("passport");
-const User = require("../models/User");
+const db = require("../models");
 
-const userController = {};
+// const userController = {};
 
-// Restrict access to root page
-userController.home = function(req, res) {
-  res.render('index', { user : req.user });
+module.exports = {
+  register: function(req, res) {
+    db.User
+      .create(req)
+      .then(dbUser => res.json(dbUser.username))
+      .catch(err => res.status(422).json(err));
+  },
+  create: function(req, res) {
+    db.User
+      .create(req.body)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  update: function(req, res) {
+    db.Book
+      .findOneAndUpdate({ _id: req.params.id }, req.body)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  remove: function(req, res) {
+    db.Book
+      .findById({ _id: req.params.id })
+      .then(dbModel => dbModel.remove())
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  }
 };
 
-// Go to registration page
-userController.register = function(req, res) {
-  res.render('register');
-};
+
+
+// // Restrict access to root page
+// userController.home = function(req, res) {
+//   res.render('index', { user : req.user });
+// };
+
+// // Go to registration page
+// userController.register = function(req, res) {
+//   res.render('register');
+// };
 
 // Post registration
 userController.doRegister = function(req, res) {
   User.register(new User({ username : req.body.username, name: req.body.name }), req.body.password, function(err, user) {
     if (err) {
-      return res.render('register', { user : user });
+      return res.json(user);
     }
 
     passport.authenticate('local')(req, res, function () {
-      res.redirect('/');
+      res.json(res);
     });
   });
 };
 
 // Go to login page
 userController.login = function(req, res) {
-  res.render('login');
+  res.json(res);
 };
 
 // Post login
 userController.doLogin = function(req, res) {
   passport.authenticate('local')(req, res, function () {
-    res.redirect('/');
+    res.json(res);
   });
 };
 
 // logout
 userController.logout = function(req, res) {
   req.logout();
-  res.redirect('/');
+  res.json(res);
 };
 
 module.exports = userController;
