@@ -9,12 +9,12 @@ module.exports = {
     db.User
       .create(req)
       .then(dbUser => res.json(dbUser.username))
+      .catch(err => res.status(422).json(err));
+    },
+    login: function(req, res) {
       passport.authenticate('local')(req, res, function () {
         res.json(res);
       })
-      .catch(err => res.status(422).json(err));
-    },
-  login: function(req, res) {
       db.User
       .create(req.body)
       .then(dbModel => res.json(dbModel))

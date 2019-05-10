@@ -7,22 +7,11 @@ export default {
   },
   // Gets the book with the given id
   signIn: function (email, password) {
-    axios.post("/api/user/login", { "email": email, "password": password })
-      .then(res => {
-        console.log(res)
-        if (res) {
-          console.log("Successful Login" + res);
-          this.setState({
-            currentPage: "Dashboard"
-          });
-        } else {
-          console.log("sign-in error");
-        }
-      })
+    return axios.post("/api/user/login", { "email": email, "password": password })
   },
   // Deletes the book with the given id
-  signUp: function (id) {
-    return axios.delete("/api/books/" + id);
+  signUp: function (email, password, username) {
+    return axios.post("/api/user/register", { "email": email, "password": password, "username": username })
   },
   // Saves a book to the database
   saveBook: function (bookData) {

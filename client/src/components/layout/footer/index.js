@@ -4,7 +4,7 @@ import React from "react";
 const styles = {
   footerStyle: {
     background: "#2ab339",
-    height: 30
+    height: 50
   }
 }
 function Footer() {

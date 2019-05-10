@@ -3,8 +3,8 @@ import ProfileButton from "../buttons/profileButton";
 
 const styles = {
   headerStyle: {
-    background: "none",
-    // opacity: 0.1
+    background: "#d5e3f8",
+    height: 30
   },
   headingStyle: {
     fontSize: 15
