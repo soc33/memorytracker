@@ -1,78 +1,52 @@
-const mongoose = require("mongoose");
 const passport = require("passport");
-const db = require("../models");
+const express = require("express");
+const db = require("../../models");
+const isAuthenticated = require("./config/middleware/isAuthenticated");
 
-// const userController = {};
 
 module.exports = {
-  register: function(req, res) {
-    db.User
-      .create(req)
-      .then(dbUser => res.json(dbUser.username))
-      .catch(err => res.status(422).json(err));
-    },
-    login: function(req, res) {
-      passport.authenticate('local')(req, res, function () {
-        res.json(res);
-      })
-      db.User
-      .create(req.body)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+  register: function (req, res) {
+    console.log("registering user");
+    db.User.register(
+      new db.User({ username: req.body.username, email: req.body.email }),
+      req.body.password,
+      function (err, user) {
+        if (err) {
+          console.log(err);
+          return res.json(err);
+        }
+        passport.authenticate("local")(req, res, function (data) {
+          res.json(req.user);
+        });
+      }
+    );
   },
-  update: function(req, res) {
-    db.Book
-      .findOneAndUpdate({ _id: req.params.id }, req.body)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+
+  login: function (req, res, next) {
+    passport.authenticate("local", function (err, user, info) {
+      if (err) {
+        return next(err);
+      }
+      if (!user) {
+        return res.json(info);
+      }
+      req.logIn(user, function (err) {
+        if (err) {
+          return next(err);
+        }
+        return res.json(user);
+      });
+    })(req, res, next);
   },
-  logout: function(req, res) {
-    db.Book
-      .findById({ _id: req.params.id })
-      .then(dbModel => dbModel.remove())
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+  
+
+  isAuthorized: isAuthenticated, function (req, res) {
+    res.json(req.user);
+  },
+
+
+  logout: function (req, res) {
+    req.logout();
+    res.json({ message: "logged out" });
   }
-};
-
-
-
-// // Restrict access to root page
-// userController.home = function(req, res) {
-//   res.render('index', { user : req.user });
-// };
-
-// // Go to registration page
-// userController.register = function(req, res) {
-//   res.render('register');
-// };
-
-// // Post registration
-// userController.doRegister = function(req, res) {
-//   User.register(new User({ username : req.body.username, name: req.body.name }), req.body.password, function(err, user) {
-//     if (err) {
-//       return res.json(user);
-//     }
-
-//   });
-// };
-
-// // Go to login page
-// userController.login = function(req, res) {
-//   res.json(res);
-// };
-
-// // Post login
-// userController.doLogin = function(req, res) {
-//   passport.authenticate('local')(req, res, function () {
-//     res.json(res);
-//   });
-// };
-
-// // logout
-// userController.logout = function(req, res) {
-//   req.logout();
-//   res.json(res);
-// };
-
-// module.exports = userController;
+}
