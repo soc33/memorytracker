@@ -6,7 +6,6 @@ import Home from "./Home";
 import Add from "./AddGame";
 import Search from "./Search";
 import SendFavs from "./SendFavs";
-import SetUp from "./SetUp";
 
 
 
@@ -30,8 +29,6 @@ class MemoryTracker extends Component {
       return <Search />;
     } else if (this.state.currentPage === "Send") {
       return <SendFavs />;
-    } else if (this.state.currentPage === "Settings") {
-      return <SetUp />;
     } else {
       return <Home />;
     }

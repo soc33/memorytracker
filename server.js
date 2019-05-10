@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client"));
+  app.use(express.static("client/build/"));
 }
 // Add routes, both API and view
 app.use(routes);
@@ -31,7 +31,7 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://user1:password1@ds227255.mlab.com:27255/heroku_1s7npj3h")
+mongoose.connect(process.env.MONGODB_URI || "mongodb://user1:password1@ds155086.mlab.com:55086/heroku_px2m2zmv")
   .then(() => console.log('connection succesful'))
   .catch((err) => console.error(err));
 // Start the API server

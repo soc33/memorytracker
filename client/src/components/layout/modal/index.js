@@ -4,12 +4,6 @@ import Wrapper from "../wrapper";
 import "./style.css";
 import API from "../../../utils/API";
 
-// const styling = {
-//   signinModalStyle: {
-//     width: "auto",
-//     height: "auto"
-//   }
-// }style={styling.signinModalStyle}
 
 class signinModal extends Component {
   state = {
