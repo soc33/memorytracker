@@ -4,7 +4,7 @@ import Header from "../components/layout/header";
 import { Link } from "react-router-dom";
 import SubmitBtn from "../components/layout/buttons/submitButton";
 import LoginState from "../components/content/loginState";
-import API from "../utils/API";
+// import API from "../utils/API";
 
 
 class Dashboard extends Component {
