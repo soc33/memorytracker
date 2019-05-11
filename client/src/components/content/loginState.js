@@ -24,7 +24,7 @@ export default {
     this.isAuth = false
   },
   getLogInState() {
-    return this.isAuth;
+    return sessionStorage.getItem('status');
   },
   getUsername() {
     return this.username;
