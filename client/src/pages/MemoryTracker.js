@@ -35,72 +35,32 @@ class MemoryTracker extends Component {
   };
 
   getUsername = () => {
-    return this.state.loginState ? this.state.loginState.getUsername() : undefined;
+    return this.LoginState ? this.LoginState.getUsername() : undefined;
   };
 
   getAuth = () => {
-    return this.state.loginState ? this.state.loginState.getLogInState() : false;
+    console.debug("getAuth - loginState: '" + LoginState.isAuthorized() + "'");
+    return LoginState.isAuthorized();
   };
 
   render() {
     return (
-      <div>
-        <Router>
-          <div>
-            <Switch>
-              <Route exact path="/dashboard" render={() => (
-                this.getAuth() ? (
-                  <Dashboard
-                  username={this.getUsername()}
+      <Router>
+        <Switch>
+          <Route exact path="/" render={() => (
+            this.getAuth() ? (
+              <Dashboard
+              username={this.getUsername()}
+              isAuthorized={this.getAuth()}
+            />
+            ) : (
+                <Home
                   isAuthorized={this.getAuth()}
                 />
-                ) : (
-                    <Home
-                      isAuthorized={this.getAuth()}
-                    />
-                  )
-              )} />
-              <Route exact path="/add" render={() => (
-                this.getAuth() ? (
-                  <Add
-                  username={this.getUsername()}
-                  isAuthorized={this.getAuth()}
-                />
-                ) : (
-                    <Home
-                      isAuthorized={this.getAuth()}
-                    />
-                  )
-              )} />
-              <Route exact path="/send" render={() => (
-                this.getAuth() ? (
-                  <SendFavs
-                  username={this.getUsername()}
-                  isAuthorized={this.getAuth()}
-                />
-                ) : (
-                    <Home
-                      isAuthorized={this.getAuth()}
-                    />
-                  )
-              )} />
-              <Route exact path="/search" render={() => (
-                this.getAuth() ? (
-                  <Search
-                  username={this.getUsername()}
-                  isAuthorized={this.getAuth()}
-                />
-                ) : (
-                    <Home
-                      isAuthorized={this.getAuth()}
-                    />
-                  )
-              )} />
-              <Route component={Home} />
-            </Switch>
-          </div>
-        </Router>
-      </div>
+              )
+          )} />
+        </Switch>
+      </Router>
     );
   }
 }
