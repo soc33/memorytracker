@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/static/css/main.09623674.chunk.css",
+    "main.js": "/static/js/main.be69f9c1.chunk.js",
+    "main.js.map": "/static/js/main.be69f9c1.chunk.js.map",
+    "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
+    "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
+    "static/js/2.f70ae7b7.chunk.js": "/static/js/2.f70ae7b7.chunk.js",
+    "static/js/2.f70ae7b7.chunk.js.map": "/static/js/2.f70ae7b7.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.5c7afe1f825640eadac4973c3e35e01c.js": "/precache-manifest.5c7afe1f825640eadac4973c3e35e01c.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.09623674.chunk.css.map": "/static/css/main.09623674.chunk.css.map",
+    "static/media/index.css": "/static/media/footerImg.aa2d9f84.png",
+    "static/media/style.css": "/static/media/scribble-transparent-cloud-2.9aa679d5.png"
+  }
+}
