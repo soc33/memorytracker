@@ -1,5 +1,4 @@
 import React from "react";
-import ProfileButton from "../buttons/profileButton";
 
 const styles = {
   headerStyle: {
@@ -18,7 +17,6 @@ function Header(props) {
     <header className="typewriter">
       <h3><span className="title1" style={styles.headingStyle}>Memory </span><span className="title2" style={styles.headingStyle}>Tracker!</span></h3>
       <h3 className="float-right">{props.children}</h3>
-      <ProfileButton />
     </header>
   );
 }
