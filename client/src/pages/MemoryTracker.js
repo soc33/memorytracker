@@ -39,8 +39,8 @@ class MemoryTracker extends Component {
   };
 
   getAuth = () => {
-    console.debug("getAuth - loginState: '" + LoginState.isAuthorized() + "'");
-    return LoginState.isAuthorized();
+    console.debug("getAuth - loginState: '" + LoginState.getLogInState() + "'");
+    return LoginState.getLogInState();
   };
 
   render() {
