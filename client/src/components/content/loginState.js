@@ -20,7 +20,7 @@ export default {
     this.isAuth = false
   },
   getLogInState() {
-    return this.isAuthed;
+    return this.isAuth;
   },
   getUsername() {
     return this.username;
