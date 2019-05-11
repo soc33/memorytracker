@@ -48,7 +48,7 @@ class signinModal extends Component {
     });
   };
 
-  signIn = {
+  signIn = () => {
 
   };
 

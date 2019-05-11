@@ -11,7 +11,10 @@ module.exports = {
           console.log(err);
           return res.json(err);
         }
-        passport.authenticate("local")(req, res, function (data) {
+        req.login(user, function(err) {
+          if (err) {
+            console.log(err);
+          }
           res.json(req.user);
         });
       }

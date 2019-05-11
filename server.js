@@ -14,8 +14,6 @@ app.use(express.json());
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build/"));
 }
-// Add routes, both API and view
-app.use(routes);
 
 app.use(require('express-session')({
   secret: 'keyboard cat',
@@ -29,6 +27,9 @@ const User = require('./models/User');
 passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
+
+// Add routes, both API and view
+app.use(routes);
 
 // Connect to the Mongo DB
 mongoose.connect(process.env.MONGODB_URI || "mongodb://user1:password1@ds155086.mlab.com:55086/heroku_px2m2zmv", { useNewUrlParser: true, useFindAndModify: false, useCreateIndex: true })
