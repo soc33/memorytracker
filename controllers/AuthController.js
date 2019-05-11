@@ -15,7 +15,7 @@ module.exports = {
           if (err) {
             console.log(err);
           }
-          res.json(req.user);
+          res.redirect('/');
         });
       }
     );
@@ -27,14 +27,8 @@ module.exports = {
         return next(err);
       }
       if (!user) {
-        return res.json(info);
+        res.redirect('/');
       }
-      req.logIn(user, function (err) {
-        if (err) {
-          return next(err);
-        }
-        return res.json(user);
-      });
     })(req, res, next);
   },
 
