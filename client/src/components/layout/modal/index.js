@@ -2,29 +2,47 @@ import React, { Component } from 'react';
 import Wrapper from "../wrapper";
 import API from "../../../utils/API";
 import Form from "../form/Form";
+import LoginState from "../../content/loginState";
 import "./style.css";
 
 
 class signinModal extends Component {
   state = {
-    username: "CoolestUsernameEver",
-    email: "email",
-    password: "password",
+    username: "",
+    email: "",
+    password: "",
     error: ""
   };
-
+  
   handleSignInSubmit = event => {
     event.preventDefault();
     this.signIn();
   }
-
+  
   handleSignUpSubmit = event => {
     event.preventDefault();
     this.signUp();
   }
+  
+  handleEmailChange = event => {
+    const value = event.target.value;
+    const name = event.target.name;
+    this.setState({
+      [name]: value
+    });
+  };
 
-  handleInputChange = event => {
-    const { name, value } = event.target;
+  handlePasswordChange = event => {
+    const value = event.target.value;
+    const name = event.target.name;
+    this.setState({
+      [name]: value
+    });
+  };
+
+  handleUsernameChange = event => {
+    const value = event.target.value;
+    const name = event.target.name;
     this.setState({
       [name]: value
     });
@@ -35,6 +53,7 @@ class signinModal extends Component {
   };
 
   signUp = () => {
+    console.log("email:" + this.state.email + "username:" + this.state.username + "password:" + this.state.password)
     API.register({ email: this.state.email, username: this.state.username, password: this.state.password })
       .then(res => {
         if (res.data.message) {
@@ -42,8 +61,7 @@ class signinModal extends Component {
             error: res.data.message
           });
         } else {
-          this.props.isAuthorized();
-          this.props.closeLogin();
+          LoginState.isAuthorized();
         }
       })
       .catch(err => {
@@ -58,12 +76,11 @@ class signinModal extends Component {
     return (
       <Wrapper>
         <Form
-          handleInputChange={this.handleInputChange}
+          handleEmailChange={this.handleEmailChange}
+          handlePasswordChange={this.handlePasswordChange}
+          handleUsernameChange={this.handleUsernameChange}
           handleSignInSubmit={this.handleSignInSubmit}
           handleSignUpSubmit={this.handleSignUpSubmit}
-          email={this.state.email}
-          password={this.state.password}
-          username={this.state.username}
         />
         {this.state.error ? (
           <p className="help error-text is-danger">{this.state.error}</p>

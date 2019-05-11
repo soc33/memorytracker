@@ -4,12 +4,12 @@ import SingInUpModal from "../components/layout/modal";
 import Footer from "../components/layout/footer";
 import FAQs from "../components/content/FAQs";
 
-function Home() {
+function Home(props) {
   return (
     <div>
      <Jumbotron />
           <FAQs/>
-          <SingInUpModal />
+          <SingInUpModal isAuthenticated={props.isAuthenticated} />
     <Footer />
     </div>
   );

@@ -10,22 +10,6 @@ const UserSchema = new Schema({
     unique: true,
     match: [/.+@.+\..+/, "Please enter a valid e-mail address"]
   },
-  username: {
-    type: String,
-    trim: true,
-    required: "Username is Required",
-    unique: true
-  },
-  password: {
-    type: String,
-    required: true,
-    validate: [
-      function (input) {
-        return input.length >= 6;
-      },
-      "Password should be longer."
-    ]
-  },
   userCreated: {
     type: Date,
     default: Date.now

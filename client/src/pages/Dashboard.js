@@ -24,7 +24,7 @@ class Dashboard extends Component {
         <Header>{this.props.username}</Header>
         <Wrapper className="paper container border border-primary">
           <h1 className="typewriter">Dear <span className="title1" >Memory </span><span className="title2" >Tracker!</span></h1>
-          <h3 className="typewriter">Today I ... </h3>
+          <h3 className="typewriter">{this.props.isAuthorized}Today I ... {this.props.username}</h3>
           <div className="row">
             <div className="col-6">
               <SubmitBtn className="btn-primary" >Saw a TV show...</SubmitBtn>

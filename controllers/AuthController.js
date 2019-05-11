@@ -5,9 +5,7 @@ const db = require("../models");
 module.exports = {
   register: function (req, res) {
     console.log("registering user");
-    db.User.register(
-      new db.User({ username: req.body.username, email: req.body.email }),
-      req.body.password,
+    db.User.register(new User({ username: req.body.username, email: req.body.email}), req.body.password,
       function (err, user) {
         if (err) {
           console.log(err);
@@ -36,19 +34,7 @@ module.exports = {
       });
     })(req, res, next);
   },
-  
-  isAuthorized: function (req, res) {
-    res.json(req.user);
-  },
 
-
-  findAll: function(req, res) {
-    db.Entries
-      .find(req.query)
-      .sort({ date: -1 })
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
-  },
   logout: function (req, res) {
     req.logout();
     res.json({ message: "logged out" });

@@ -6,106 +6,96 @@ import Add from "./AddGame";
 import Search from "./Search";
 import SendFavs from "./SendFavs";
 import API from "../utils/API";
+import LoginState from "../components/content/loginState";
 
 
 
 class MemoryTracker extends Component {
   state = {
-    isAuth: false,
-    activeTab: "",
-    username: "",
-    authSites: ["/dashboard", "/send", "/search", "/add"],
-    wait404: true
+    loginState: LoginState.isAuthorized()
   };
 
   componentDidMount() {
-    this.isAuthorized();
+    LoginState.getLogInState()
   };
 
   componentWillUnmount() {
 
   };
 
-  resetState = () => {
-    this.setState({
-      isAuth: false,
-      username: ""
-    });
-  };
-
-  isAuthorized = () => {
-    API.isAuthorized()
-      .then(res => {
-        this.setState({ wait404: false });
-        if (res.data.message) {
-          this.resetState();
-        } else {
-          this.setState({
-            isAuth: true,
-            username: res.data.username
-          })
-          this.redirect();
-        }
-      })
-      .catch(err => {
-        console.log(err);
-        this.setState({ wait404: false });
-        this.resetState();
-      });
-  };
-
 
   logout = () => {
     API.logout()
       .then(res => {
-        this.isAuthorized();
+        LoginState.isAuthorized();
       })
       .catch(err => {
-        this.isAuthorized();
+        LoginState.isAuthorized();
       });
   };
-  
+
+  getUsername = () => {
+    return this.state.loginState ? this.state.loginState.getUsername() : undefined;
+  };
+
+  getAuth = () => {
+    return this.state.loginState ? this.state.loginState.getLogInState() : false;
+  };
+
   render() {
     return (
       <div>
         <Router>
           <div>
             <Switch>
-              <Route exact path="/dashboard" render={props => (
-                <Dashboard
-                  username={this.state.username}
-                  isAuthorized={this.isAuthorized}
+              <Route exact path="/dashboard" render={() => (
+                this.getAuth() ? (
+                  <Dashboard
+                  username={this.getUsername()}
+                  isAuthorized={this.getAuth()}
                 />
-              )}
-              />
-              <Route exact path="/" render={() => (
-                this.state.isAuth ? (
-                  <Redirect to="/dashboard" />
                 ) : (
-                    <Home />
+                    <Home
+                      isAuthorized={this.getAuth()}
+                    />
                   )
               )} />
-              <Route exact path="/add" render={props => (
-                <Add
-                  username={this.state.username}
-                  isAuthorized={this.isAuthorized}
+              <Route exact path="/add" render={() => (
+                this.getAuth() ? (
+                  <Add
+                  username={this.getUsername()}
+                  isAuthorized={this.getAuth()}
                 />
-              )}
-              />
-              <Route exact path="/send" render={props => (
-                <SendFavs
-                  username={this.state.username}
-                  isAuthorized={this.isAuthorized}
+                ) : (
+                    <Home
+                      isAuthorized={this.getAuth()}
+                    />
+                  )
+              )} />
+              <Route exact path="/send" render={() => (
+                this.getAuth() ? (
+                  <SendFavs
+                  username={this.getUsername()}
+                  isAuthorized={this.getAuth()}
                 />
-              )}
-              />
-              <Route exact path="/search" render={props => (
-                <Search
-                  username={this.state.username}
-                  isAuthorized={this.isAuthorized}
+                ) : (
+                    <Home
+                      isAuthorized={this.getAuth()}
+                    />
+                  )
+              )} />
+              <Route exact path="/search" render={() => (
+                this.getAuth() ? (
+                  <Search
+                  username={this.getUsername()}
+                  isAuthorized={this.getAuth()}
                 />
-              )}
-              />
+                ) : (
+                    <Home
+                      isAuthorized={this.getAuth()}
+                    />
+                  )
+              )} />
               <Route component={Home} />
             </Switch>
           </div>
