@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Wrapper from "../components/layout/wrapper";
 import Header from "../components/layout/header";
+import { Link } from "react-router-dom";
 import SubmitBtn from "../components/layout/buttons/submitButton";
 import API from "../utils/API";
 
@@ -27,7 +28,7 @@ class Dashboard extends Component {
           <h3 className="typewriter">{this.props.isAuthorized}Today I ... {this.props.username}</h3>
           <div className="row">
             <div className="col-6">
-              <SubmitBtn className="btn-primary" >Saw a TV show...</SubmitBtn>
+              <Link to="/Add"><SubmitBtn className="btn-primary">Saw a TV show...</SubmitBtn></Link>
               <SubmitBtn className="btn-primary">Saw a Movie...</SubmitBtn>
               <SubmitBtn className="btn-primary">Played a Game...</SubmitBtn>
             </div>
@@ -40,6 +41,7 @@ class Dashboard extends Component {
           <hr/>
 
           <h1>Latest Logs</h1>
+          <p>No logs yet :/ Click a button above to get started!</p>
         </Wrapper>
       </div>
     );
